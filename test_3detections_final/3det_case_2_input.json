@@ -1,0 +1,32 @@
+{
+  "detection1": {
+    "sensor_lat": -21.957102365849085,
+    "sensor_lon": 20.861228304452332,
+    "ioo_lat": -21.912393424051032,
+    "ioo_lon": 20.773785543271906,
+    "freq_mhz": 100.0,
+    "timestamp": 1748886575003,
+    "bistatic_range_km": 44.22124,
+    "doppler_hz": 28.84036
+  },
+  "detection2": {
+    "sensor_lat": -21.914398277843127,
+    "sensor_lon": 20.946078742037358,
+    "ioo_lat": -21.90026590243855,
+    "ioo_lon": 20.966545145785705,
+    "freq_mhz": 100.0,
+    "timestamp": 1748886575003,
+    "bistatic_range_km": 50.90711,
+    "doppler_hz": -9.32779
+  },
+  "detection3": {
+    "sensor_lat": -21.897030035515545,
+    "sensor_lon": 20.889366660766736,
+    "ioo_lat": -21.90026590243855,
+    "ioo_lon": 20.966545145785705,
+    "freq_mhz": 100.0,
+    "timestamp": 1748886575003,
+    "bistatic_range_km": 46.7423,
+    "doppler_hz": -22.37452
+  }
+}

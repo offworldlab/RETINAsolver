@@ -1,0 +1,617 @@
+{
+  "num_cases": 10,
+  "cases": [
+    {
+      "case_number": 1,
+      "center_lat": 35.46240028790703,
+      "center_lon": 173.13896385261927,
+      "input_file": "test_detections/test_case_1_input.json",
+      "truth_file": "test_detections/test_case_1_truth.json",
+      "sensor1": {
+        "lat": 35.46416053607587,
+        "lon": 173.15303189093763
+      },
+      "sensor2": {
+        "lat": 35.47281216724823,
+        "lon": 173.1077989049731
+      },
+      "ioo1": {
+        "lat": 35.446384901550125,
+        "lon": 173.1621636969638
+      },
+      "ioo2": {
+        "lat": 35.46168726311716,
+        "lon": 173.18121012412166
+      },
+      "target": {
+        "lat": 35.648253067828804,
+        "lon": 173.1019447549122,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": 252.3463770348663,
+        "north": 119.9067019641353,
+        "speed": 279.38559586803837
+      },
+      "bistatic_range1_km": 45.138623626259914,
+      "bistatic_range2_km": 42.59500071735476,
+      "doppler1_hz": 1.345949615900894,
+      "doppler2_hz": 26.606385486339022
+    },
+    {
+      "case_number": 2,
+      "center_lat": 27.528802867671786,
+      "center_lon": -40.9579807257125,
+      "input_file": "test_detections/test_case_2_input.json",
+      "truth_file": "test_detections/test_case_2_truth.json",
+      "sensor1": {
+        "lat": 27.52660794694043,
+        "lon": -40.95108676106638
+      },
+      "sensor2": {
+        "lat": 27.506904066693814,
+        "lon": -40.92950143422079
+      },
+      "ioo1": {
+        "lat": 27.51594784118896,
+        "lon": -40.96210387620945
+      },
+      "ioo2": {
+        "lat": 27.56641196220234,
+        "lon": -40.96461966836643
+      },
+      "target": {
+        "lat": 27.63962078093287,
+        "lon": -41.135749188262956,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": 207.29694689263013,
+        "north": -85.71452043582944,
+        "speed": 224.31897647000386
+      },
+      "bistatic_range1_km": 45.206929119420295,
+      "bistatic_range2_km": 45.02692600259622,
+      "doppler1_hz": -1.310527024315365,
+      "doppler2_hz": 0.7767854847845349
+    },
+    {
+      "case_number": 3,
+      "center_lat": 18.022857842830348,
+      "center_lon": 30.811979430758896,
+      "input_file": "test_detections/test_case_3_input.json",
+      "truth_file": "test_detections/test_case_3_truth.json",
+      "sensor1": {
+        "lat": 18.028401004005254,
+        "lon": 30.82766441432336
+      },
+      "sensor2": {
+        "lat": 17.985818310878923,
+        "lon": 30.82381461083395
+      },
+      "ioo1": {
+        "lat": 18.00886010798077,
+        "lon": 30.819517441558272
+      },
+      "ioo2": {
+        "lat": 18.047618535755035,
+        "lon": 30.82210201142929
+      },
+      "target": {
+        "lat": 18.20700224226666,
+        "lon": 30.72561349845022,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": -112.43501519584076,
+        "north": -58.929773460237826,
+        "speed": 126.94231304873838
+      },
+      "bistatic_range1_km": 47.68352126432097,
+      "bistatic_range2_km": 48.06758447482263,
+      "doppler1_hz": 3.086783662552852,
+      "doppler2_hz": -5.0996485908629525
+    },
+    {
+      "case_number": 4,
+      "center_lat": 7.888998782095939,
+      "center_lon": 56.61092849818334,
+      "input_file": "test_detections/test_case_4_input.json",
+      "truth_file": "test_detections/test_case_4_truth.json",
+      "sensor1": {
+        "lat": 7.892921980642484,
+        "lon": 56.60089673879693
+      },
+      "sensor2": {
+        "lat": 7.8998661393643435,
+        "lon": 56.61507702854017
+      },
+      "ioo1": {
+        "lat": 7.876092499230223,
+        "lon": 56.62287381817295
+      },
+      "ioo2": {
+        "lat": 7.899833507844036,
+        "lon": 56.58385290166396
+      },
+      "target": {
+        "lat": 7.837723785090511,
+        "lon": 56.314621699645784,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": 126.71097438188592,
+        "north": -88.93188896226991,
+        "speed": 154.80488333125817
+      },
+      "bistatic_range1_km": 67.1882984112002,
+      "bistatic_range2_km": 65.11322350830432,
+      "doppler1_hz": 2.424326360977814,
+      "doppler2_hz": -0.9420767668289436
+    },
+    {
+      "case_number": 5,
+      "center_lat": 25.641604581977717,
+      "center_lon": 137.33594871448065,
+      "input_file": "test_detections/test_case_5_input.json",
+      "truth_file": "test_detections/test_case_5_truth.json",
+      "sensor1": {
+        "lat": 25.6332733807902,
+        "lon": 137.33548082492564
+      },
+      "sensor2": {
+        "lat": 25.621692713187034,
+        "lon": 137.35287927077968
+      },
+      "ioo1": {
+        "lat": 25.662695580000115,
+        "lon": 137.3271990197519
+      },
+      "ioo2": {
+        "lat": 25.63961411408004,
+        "lon": 137.29502662106964
+      },
+      "target": {
+        "lat": 25.43883418061611,
+        "lon": 137.52490696427645,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": 100.28793977892515,
+        "north": 181.45131355460236,
+        "speed": 207.32161019968936
+      },
+      "bistatic_range1_km": 61.37118460333471,
+      "bistatic_range2_km": 59.5793947669238,
+      "doppler1_hz": 3.1466655571180158,
+      "doppler2_hz": -6.217389102632465
+    },
+    {
+      "case_number": 6,
+      "center_lat": 46.366485168029,
+      "center_lon": 179.79426797838607,
+      "input_file": "test_detections/test_case_6_input.json",
+      "truth_file": "test_detections/test_case_6_truth.json",
+      "sensor1": {
+        "lat": 46.37049414039256,
+        "lon": 179.81315999925314
+      },
+      "sensor2": {
+        "lat": 46.34354169401972,
+        "lon": 179.78214993749484
+      },
+      "ioo1": {
+        "lat": 46.38039110191554,
+        "lon": 179.80512113615995
+      },
+      "ioo2": {
+        "lat": 46.34202727983879,
+        "lon": 179.7990044666842
+      },
+      "target": {
+        "lat": 46.105534874984485,
+        "lon": 179.95633307571606,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": 32.39356485390747,
+        "north": -148.8913766275721,
+        "speed": 152.37448959060646
+      },
+      "bistatic_range1_km": 64.95580301797501,
+      "bistatic_range2_km": 59.49701225444001,
+      "doppler1_hz": -0.0028491376189003826,
+      "doppler2_hz": -0.4031110708951884
+    },
+    {
+      "case_number": 7,
+      "center_lat": -56.46697339122793,
+      "center_lon": -163.09809612038723,
+      "input_file": "test_detections/test_case_7_input.json",
+      "truth_file": "test_detections/test_case_7_truth.json",
+      "sensor1": {
+        "lat": -56.47512066888474,
+        "lon": -163.10816370156888
+      },
+      "sensor2": {
+        "lat": -56.4560663313793,
+        "lon": -163.12525293419
+      },
+      "ioo1": {
+        "lat": -56.46122012174026,
+        "lon": -163.07087092833154
+      },
+      "ioo2": {
+        "lat": -56.46657203678848,
+        "lon": -163.07575137243114
+      },
+      "target": {
+        "lat": -56.71737271648586,
+        "lon": -163.40820316926332,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": -148.7184303828141,
+        "north": 144.76110550107046,
+        "speed": 207.54023513868333
+      },
+      "bistatic_range1_km": 68.68799651717002,
+      "bistatic_range2_km": 69.24697677475072,
+      "doppler1_hz": -1.9607248962730983,
+      "doppler2_hz": -6.267834625741869
+    },
+    {
+      "case_number": 8,
+      "center_lat": -53.68152958948259,
+      "center_lon": -6.169729772610623,
+      "input_file": "test_detections/test_case_8_input.json",
+      "truth_file": "test_detections/test_case_8_truth.json",
+      "sensor1": {
+        "lat": -53.69252167871822,
+        "lon": -6.147813702265911
+      },
+      "sensor2": {
+        "lat": -53.69160845002979,
+        "lon": -6.162087214014347
+      },
+      "ioo1": {
+        "lat": -53.680418345615536,
+        "lon": -6.14664630641075
+      },
+      "ioo2": {
+        "lat": -53.63964283089681,
+        "lon": -6.159508502817302
+      },
+      "target": {
+        "lat": -53.84629818113889,
+        "lon": -5.701792413396007,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": 57.37329952122835,
+        "north": 248.24298102768984,
+        "speed": 254.7867208617171
+      },
+      "bistatic_range1_km": 69.4407175641231,
+      "bistatic_range2_km": 73.56779484133352,
+      "doppler1_hz": 2.781044835521953,
+      "doppler2_hz": 10.691526457615366
+    },
+    {
+      "case_number": 9,
+      "center_lat": 12.57300507089478,
+      "center_lon": -60.45331693874209,
+      "input_file": "test_detections/test_case_9_input.json",
+      "truth_file": "test_detections/test_case_9_truth.json",
+      "sensor1": {
+        "lat": 12.577884070411791,
+        "lon": -60.45204112205637
+      },
+      "sensor2": {
+        "lat": 12.540053767049963,
+        "lon": -60.46896353990902
+      },
+      "ioo1": {
+        "lat": 12.578742617483982,
+        "lon": -60.43300335113012
+      },
+      "ioo2": {
+        "lat": 12.56685514967754,
+        "lon": -60.442514965428416
+      },
+      "target": {
+        "lat": 12.818537953619172,
+        "lon": -60.42000838825255,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": 195.55470973762377,
+        "north": -125.40782715829185,
+        "speed": 232.3117896559068
+      },
+      "bistatic_range1_km": 54.363704695025966,
+      "bistatic_range2_km": 60.07786533350962,
+      "doppler1_hz": 5.1784066323286,
+      "doppler2_hz": 5.656675383794318
+    },
+    {
+      "case_number": 10,
+      "center_lat": 42.762341507674336,
+      "center_lon": -32.5016075470881,
+      "input_file": "test_detections/test_case_10_input.json",
+      "truth_file": "test_detections/test_case_10_truth.json",
+      "sensor1": {
+        "lat": 42.77405604566559,
+        "lon": -32.50259376148526
+      },
+      "sensor2": {
+        "lat": 42.75759989738662,
+        "lon": -32.457116336066356
+      },
+      "ioo1": {
+        "lat": 42.76089614150395,
+        "lon": -32.490595490948365
+      },
+      "ioo2": {
+        "lat": 42.722499150282964,
+        "lon": -32.47967684114803
+      },
+      "target": {
+        "lat": 42.94189324532187,
+        "lon": -32.44501970194219,
+        "alt": 5000.0
+      },
+      "velocity": {
+        "east": -237.96992996560604,
+        "north": -145.82281414908337,
+        "speed": 279.09493133017224
+      },
+      "bistatic_range1_km": 40.935635537215155,
+      "bistatic_range2_km": 46.15605659795175,
+      "doppler1_hz": -3.9400861782420207,
+      "doppler2_hz": 5.411701467435195
+    }
+  ],
+  "validation_results": [
+    {
+      "success": true,
+      "position_error_m": 25148.985354266224,
+      "velocity_error_m_s": 3761.705168797147,
+      "solver_output": {
+        "timestamp": 1748877470651,
+        "latitude": 35.47883991441558,
+        "longitude": 172.91723354659257,
+        "altitude": 5000.0,
+        "velocity_east": 3976.089125073829,
+        "velocity_north": -413.16526633133543,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877470651,
+        "latitude": 35.648253067828804,
+        "longitude": 173.1019447549122,
+        "altitude": 5000.0,
+        "velocity_east": 252.3463770348663,
+        "velocity_north": 119.9067019641353,
+        "velocity_up": 0.0
+      },
+      "converged": false
+    },
+    {
+      "success": true,
+      "position_error_m": 35435294.28628172,
+      "velocity_error_m_s": 0.4166976764216397,
+      "solver_output": {
+        "timestamp": 1748877471101,
+        "latitude": 27.639590981967686,
+        "longitude": 318.864352786664,
+        "altitude": 5000.0,
+        "velocity_east": 206.92795941939642,
+        "velocity_north": -85.90813138110835,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877471101,
+        "latitude": 27.63962078093287,
+        "longitude": -41.135749188262956,
+        "altitude": 5000.0,
+        "velocity_east": 207.29694689263013,
+        "velocity_north": -85.71452043582944,
+        "velocity_up": 0.0
+      },
+      "converged": false
+    },
+    {
+      "success": true,
+      "position_error_m": 18089.960374650713,
+      "velocity_error_m_s": 2304.6234650314677,
+      "solver_output": {
+        "timestamp": 1748877471356,
+        "latitude": 18.083084447516093,
+        "longitude": 30.614447600965107,
+        "altitude": 5000.0,
+        "velocity_east": -2304.6523175917473,
+        "velocity_north": 652.0361994594674,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877471356,
+        "latitude": 18.20700224226666,
+        "longitude": 30.72561349845022,
+        "altitude": 5000.0,
+        "velocity_east": -112.43501519584076,
+        "velocity_north": -58.929773460237826,
+        "velocity_up": 0.0
+      },
+      "converged": false
+    },
+    {
+      "success": true,
+      "position_error_m": 15.367988178333471,
+      "velocity_error_m_s": 0.5054615263684896,
+      "solver_output": {
+        "timestamp": 1748877471615,
+        "latitude": 7.837812651459163,
+        "longitude": 56.314728684858096,
+        "altitude": 5000.0,
+        "velocity_east": 127.21533029136314,
+        "velocity_north": -88.96530260041608,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877471615,
+        "latitude": 7.837723785090511,
+        "longitude": 56.314621699645784,
+        "altitude": 5000.0,
+        "velocity_east": 126.71097438188592,
+        "velocity_north": -88.93188896226991,
+        "velocity_up": 0.0
+      },
+      "converged": true
+    },
+    {
+      "success": true,
+      "position_error_m": 53282.30902837174,
+      "velocity_error_m_s": 35806.09155249245,
+      "solver_output": {
+        "timestamp": 1748877471865,
+        "latitude": 25.61811405453409,
+        "longitude": 137.0323863414903,
+        "altitude": 5000.0,
+        "velocity_east": 35688.179596169335,
+        "velocity_north": 4128.369062696195,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877471865,
+        "latitude": 25.43883418061611,
+        "longitude": 137.52490696427645,
+        "altitude": 5000.0,
+        "velocity_east": 100.28793977892515,
+        "velocity_north": 181.45131355460236,
+        "velocity_up": 0.0
+      },
+      "converged": false
+    },
+    {
+      "success": true,
+      "position_error_m": 43117.56931308186,
+      "velocity_error_m_s": 1542.8404880035307,
+      "solver_output": {
+        "timestamp": 1748877472106,
+        "latitude": 46.2480298090224,
+        "longitude": 179.4357318766485,
+        "altitude": 5000.0,
+        "velocity_east": 1345.609793610049,
+        "velocity_north": 660.9357085915319,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877472106,
+        "latitude": 46.105534874984485,
+        "longitude": 179.95633307571606,
+        "altitude": 5000.0,
+        "velocity_east": 32.39356485390747,
+        "velocity_north": -148.8913766275721,
+        "velocity_up": 0.0
+      },
+      "converged": false
+    },
+    {
+      "success": true,
+      "position_error_m": 21950763.153673194,
+      "velocity_error_m_s": 2.3367888374962518,
+      "solver_output": {
+        "timestamp": 1748877472353,
+        "latitude": -56.71729507793332,
+        "longitude": 196.5919679969565,
+        "altitude": 5000.0,
+        "velocity_east": -147.58347710081682,
+        "velocity_north": 146.80376629492017,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877472353,
+        "latitude": -56.71737271648586,
+        "longitude": -163.40820316926332,
+        "altitude": 5000.0,
+        "velocity_east": -148.7184303828141,
+        "velocity_north": 144.76110550107046,
+        "velocity_up": 0.0
+      },
+      "converged": false
+    },
+    {
+      "success": true,
+      "position_error_m": 23598091.54059487,
+      "velocity_error_m_s": 1.897947329114774,
+      "solver_output": {
+        "timestamp": 1748877472602,
+        "latitude": -53.846372365327866,
+        "longitude": 354.2978856813533,
+        "altitude": 5000.0,
+        "velocity_east": 59.226165477792144,
+        "velocity_north": 247.83177328080168,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877472602,
+        "latitude": -53.84629818113889,
+        "longitude": -5.701792413396007,
+        "altitude": 5000.0,
+        "velocity_east": 57.37329952122835,
+        "velocity_north": 248.24298102768984,
+        "velocity_up": 0.0
+      },
+      "converged": false
+    },
+    {
+      "success": true,
+      "position_error_m": 39003095.622392096,
+      "velocity_error_m_s": 56.90904365610453,
+      "solver_output": {
+        "timestamp": 1748877472844,
+        "latitude": 12.818397835227124,
+        "longitude": 299.58026630425996,
+        "altitude": 5000.0,
+        "velocity_east": 190.49183467958963,
+        "velocity_north": -182.0912157831716,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877472844,
+        "latitude": 12.818537953619172,
+        "longitude": -60.42000838825255,
+        "altitude": 5000.0,
+        "velocity_east": 195.55470973762377,
+        "velocity_north": -125.40782715829185,
+        "velocity_up": 0.0
+      },
+      "converged": false
+    },
+    {
+      "success": true,
+      "position_error_m": 29257894.168348107,
+      "velocity_error_m_s": 1140.3414555361257,
+      "solver_output": {
+        "timestamp": 1748877473089,
+        "latitude": 42.772700810033434,
+        "longitude": 327.26137101594685,
+        "altitude": 5000.0,
+        "velocity_east": -1338.851862113908,
+        "velocity_north": 151.56179655508728,
+        "velocity_up": 0.0
+      },
+      "ground_truth": {
+        "timestamp": 1748877473089,
+        "latitude": 42.94189324532187,
+        "longitude": -32.44501970194219,
+        "altitude": 5000.0,
+        "velocity_east": -237.96992996560604,
+        "velocity_north": -145.82281414908337,
+        "velocity_up": 0.0
+      },
+      "converged": false
+    }
+  ]
+}
