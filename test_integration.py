@@ -6,14 +6,14 @@ import tempfile
 import subprocess
 import os
 
-from detection import DetectionPair, load_detections
-from initial_guess import get_initial_guess
-from lm_solver import solve_position_velocity
+from detection_triple import DetectionTriple, load_detections
+from initial_guess_3det import get_initial_guess
+from lm_solver_3det import solve_position_velocity_3d
 
 
 def test_end_to_end_valid():
     """Test complete pipeline with valid data"""
-    # Create test data
+    # Create test data with 3 detections
     test_data = {
         "detection1": {
             "sensor_lat": 40.0,
@@ -34,6 +34,16 @@ def test_end_to_end_valid():
             "timestamp": 1234567890,
             "bistatic_range_km": 110.0,
             "doppler_hz": 30.0
+        },
+        "detection3": {
+            "sensor_lat": 40.5,
+            "sensor_lon": -74.5,
+            "ioo_lat": 40.5,
+            "ioo_lon": -73.5,
+            "freq_mhz": 100.0,
+            "timestamp": 1234567890,
+            "bistatic_range_km": 105.0,
+            "doppler_hz": 10.0
         }
     }
     
@@ -44,9 +54,9 @@ def test_end_to_end_valid():
     
     try:
         # Load and process
-        detection_pair = load_detections(temp_file)
-        initial = get_initial_guess(detection_pair)
-        solution = solve_position_velocity(detection_pair, initial)
+        detection_triple = load_detections(temp_file)
+        initial = get_initial_guess(detection_triple)
+        solution = solve_position_velocity_3d(detection_triple, initial)
         
         # Check we got a solution
         assert solution is not None
@@ -81,6 +91,16 @@ def test_command_line_interface():
             "timestamp": 1234567890123,
             "bistatic_range_km": 55.0,
             "doppler_hz": 15.0
+        },
+        "detection3": {
+            "sensor_lat": 40.7300,
+            "sensor_lon": -74.0200,
+            "ioo_lat": 40.7489,
+            "ioo_lon": -73.9680,
+            "freq_mhz": 99.8,
+            "timestamp": 1234567890123,
+            "bistatic_range_km": 52.0,
+            "doppler_hz": 5.0
         }
     }
     
@@ -89,9 +109,9 @@ def test_command_line_interface():
         temp_file = f.name
     
     try:
-        # Run main.py
+        # Run main_3det.py
         result = subprocess.run(
-            ['python', 'main.py', temp_file],
+            ['python', 'main_3det.py', temp_file],
             capture_output=True,
             text=True,
             cwd='.'
@@ -134,6 +154,16 @@ def test_no_solution_case():
             "timestamp": 1234567890,
             "bistatic_range_km": 0.1,  # Impossible range
             "doppler_hz": 10000.0  # Impossible Doppler
+        },
+        "detection3": {
+            "sensor_lat": 40.5,
+            "sensor_lon": -73.5,
+            "ioo_lat": 40.5,
+            "ioo_lon": -73.5,
+            "freq_mhz": 100.0,
+            "timestamp": 1234567890,
+            "bistatic_range_km": 0.1,  # Impossible range
+            "doppler_hz": 5000.0  # Impossible Doppler
         }
     }
     
@@ -142,9 +172,9 @@ def test_no_solution_case():
         temp_file = f.name
     
     try:
-        # Run main.py
+        # Run main_3det.py
         result = subprocess.run(
-            ['python', 'main.py', temp_file],
+            ['python', 'main_3det.py', temp_file],
             capture_output=True,
             text=True,
             cwd='.'
@@ -172,7 +202,7 @@ def test_invalid_json():
     
     try:
         result = subprocess.run(
-            ['python', 'main.py', temp_file],
+            ['python', 'main_3det.py', temp_file],
             capture_output=True,
             text=True,
             cwd='.'
