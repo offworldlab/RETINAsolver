@@ -1,0 +1,25 @@
+version: '3'
+
+networks:
+  adsb-network:
+    external: true
+
+services:
+  synthetic-adsb:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: synthetic-adsb
+    network_mode: host
+    container_name: synthetic-adsb
+    env_file:
+      - .env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:5001/data/aircraft.json" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s

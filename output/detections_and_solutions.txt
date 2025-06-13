@@ -1,0 +1,23 @@
+=== INPUT DETECTIONS ===
+
+Detection 1:
+  Sensor Location: 40.7128°, -74.0060°
+  IoO Location: 40.6892°, -74.0445°
+  Frequency: 98.7 MHz
+  Timestamp: 1234567890123 ms
+  Bistatic Range: 120.5 km
+  Doppler Shift: -150.0 Hz
+
+Detection 2:
+  Sensor Location: 40.7580°, -73.9855°
+  IoO Location: 40.7489°, -73.9680°
+  Frequency: 101.9 MHz
+  Timestamp: 1234567890123 ms
+  Bistatic Range: 115.8 km
+  Doppler Shift: 80.0 Hz
+
+=== SOLUTION ===
+  Timestamp: 1234567890123 ms
+  Position (LLA): 41.155221°, 285.589903°, 5000.0m
+  Velocity (ENU): E=-117726.69 m/s, N=196129.13 m/s, U=0.00 m/s
+  Speed: 228654.82 m/s

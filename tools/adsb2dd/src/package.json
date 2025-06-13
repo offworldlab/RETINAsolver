@@ -1,0 +1,16 @@
+{
+  "name": "adsb2dd",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "adsb2dd",
+  "author": "github.com/30hours",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "cors": "^2.8.5",
+    "node-fetch": "^3.3.2"
+  }
+}
