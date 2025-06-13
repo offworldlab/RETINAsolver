@@ -1,11 +1,12 @@
-- We are making a telemetry solver for a bistatic passive radar aggregation server. It has two modules, an initial guess module and a Levenberg–Marquardt Least Squares solver module.
+- We are making RETINAsolver, a telemetry solver for a bistatic passive radar aggregation server. It has two main modules: an initial guess module and a Levenberg–Marquardt Least Squares solver module.
 - Each sensor with a fixed, known, location is paired with a illuminator of opportunity (IoO) with a fixed, known, location. The sensors have a reference and survellience antenna on coherent channels on an SDR with a TCXO, so the TDOA and FDOA can be caluclated locally and then sent to the server. The bistatic range reported is the total path IoO→Target→Sensor. The FDOA is the frequency difference of IoO→Sensor compared to IoO→Target→Sensor with negative sign meaning reduction in frequency from sensors POV. Sensors may share IoO, or have different IoO.
 - The program will be provided three simultaneous detections via JSON, each with the following information: Sensor position (lat, long), IoO position (lat, long), Transmission frequency in MHz, Timestamp in Unix time milliseconds, Bistatic range in km, Doppler shift in Hz.
 
 ## Repository Structure
 
-This repository contains the core telemetry solver. Supporting tools are available as git submodules:
+This repository contains the complete telemetry solver with supporting tools as git submodules:
 
+- Core solver files: `main_3det.py`, `detection_triple.py`, `lm_solver_3det.py`, `initial_guess_3det.py`, `Geometry.py`
 - `tools/adsb2dd/` - Converts ADS-B aircraft data to delay-Doppler format (JavaScript/web-based)
 - `tools/synthetic-adsb/` - Generates synthetic radar test data (Python/Flask API)
 

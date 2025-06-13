@@ -12,6 +12,24 @@ A high-precision telemetry solver for bistatic passive radar systems. RETINAsolv
 - **JSON Interface**: Simple input/output format for easy integration
 - **Modular Design**: Clean separation of detection parsing, initial guess, and solver components
 
+## Repository Structure
+
+```
+RETINAsolver/
+├── main_3det.py               # Main solver entry point
+├── detection_triple.py        # Input data structures and parsing
+├── lm_solver_3det.py          # Levenberg-Marquardt solver implementation
+├── initial_guess_3det.py      # Initial guess generation algorithms
+├── Geometry.py                # Coordinate system conversions
+├── test_*.py                  # Unit and integration tests
+├── tools/
+│   ├── adsb2dd/              # ADS-B to delay-doppler converter (submodule)
+│   └── synthetic-adsb/       # Synthetic radar data generator (submodule)
+├── test_3detections_final/   # Comprehensive test cases
+├── analysis_tools/           # Performance analysis scripts
+└── README.md                 # This file
+```
+
 ## Quick Start
 
 ### Prerequisites
@@ -93,7 +111,7 @@ python main_3det.py input_detections.json
 {
   "timestamp": 1700000000,
   "latitude": 40.799619,
-  "longitude": 286.029864,
+  "longitude": -73.970136,
   "altitude": 10142.0,
   "velocity_east": 69.7,
   "velocity_north": 298.6,
@@ -103,9 +121,38 @@ python main_3det.py input_detections.json
 }
 ```
 
-## How It Works
+## Key Features
 
-### System Overview
+### Optional Initial Guess Support
+
+You can now provide an initial guess to improve convergence for challenging scenarios:
+
+**Benefits**:
+- Faster convergence for distant targets
+- Improved success rate in challenging geometries
+- Backward compatible - works without initial guess
+- Automatic validation and fallback to generated guess
+
+**Input Format**: LLA position + ENU velocity in JSON
+**Validation**: Altitude 0-100km, velocity ±1000 m/s bounds checking
+**Conversion**: Automatic LLA→ENU coordinate transformation
+
+## Data Pipeline
+
+The complete workflow from synthetic data to solved positions:
+
+```
+synthetic-adsb → adsb2dd → RETINAsolver → analysis
+```
+
+1. **Generate synthetic data**: Create realistic aircraft trajectories and radar measurements
+2. **Convert to detection format**: Transform ADS-B tracking data to bistatic measurements  
+3. **Solve for position/velocity**: Process detections to recover target state
+4. **Analyze performance**: Validate accuracy and convergence characteristics
+
+## Algorithm Overview
+
+### How It Works
 
 RETINAsolver implements a passive radar telemetry system that:
 
@@ -121,35 +168,55 @@ RETINAsolver implements a passive radar telemetry system that:
 
 5. **Returns solution** in geographic coordinates with velocity vector
 
-### Key Components
+### Coordinate Systems
+- **Input/Output**: Geographic WGS84 (lat/lon/alt)
+- **Internal Processing**: Local ENU tangent plane
+- **Conversions**: Automatic LLA↔ECEF↔ENU transformations
 
-- **`detection_triple.py`**: Parses and validates 3-detection input data
-- **`initial_guess_3det.py`**: Generates initial position/velocity estimate
-- **`lm_solver_3det.py`**: Levenberg-Marquardt solver with bounds checking
-- **`main_3det.py`**: Main entry point and JSON interface
-- **`Geometry.py`**: Coordinate system conversions (LLA ↔ ECEF ↔ ENU)
+### Optimization Method
+- **Algorithm**: Levenberg-Marquardt least squares
+- **State Vector**: 6D position and velocity `[x, y, z, vx, vy, vz]`
+- **Measurements**: 6 equations (3 bistatic range + 3 Doppler)
+- **Constraints**: Altitude bounds, velocity limits, convergence criteria
 
-## Testing
+### Initial Guess Strategies
+1. **Automatic**: Ellipse intersection geometry (default)
+2. **User-Provided**: LLA position + ENU velocity (optional)
+3. **Validation**: Bounds checking with automatic fallback
 
-Run the test suite to verify functionality:
+## Testing & Validation
+
+### Test Suites
+
+- **Unit Tests**: Individual component validation
+- **Integration Tests**: End-to-end solver testing
+- **Performance Tests**: Convergence rate and accuracy analysis
+- **Synthetic Data Tests**: 20+ challenging geometric scenarios
+
+### Run Tests
 
 ```bash
-# Run unit tests
-python -m pytest test_detection_triple.py test_lm_solver_3det.py -v
+# Core solver tests
+python -m pytest test_*.py -v
 
-# Run convergence tests
-python test_convergence.py
+# Integration tests with sample data
+python main_3det.py test_3detections_final/3det_case_1_input.json
 
-# Test with sample data
-python main_3det.py test_case.json
+# Performance analysis
+python analyze_initial_guess.py
+python verify_3det_solution.py
 ```
 
-Expected performance:
-- **100% convergence rate** on well-conditioned problems
-- **Sub-meter accuracy** for typical scenarios
-- **<1 second** processing time per solve
+### Expected Performance
 
-## Input Specification
+- **Convergence Rate**: >95% for well-conditioned problems
+- **Position Accuracy**: Sub-meter typical, <10m worst-case
+- **Velocity Accuracy**: ~1 m/s typical, <5 m/s worst-case
+- **Processing Time**: <1 second per solve
+
+## Input/Output Specification
+
+### Detection Input
 
 Each detection requires:
 
@@ -175,12 +242,7 @@ Each detection requires:
 | `initial_guess.velocity_enu.north` | float | Initial northward velocity (m/s, ±1000) |
 | `initial_guess.velocity_enu.up` | float | Initial upward velocity (m/s, ±1000) |
 
-**Notes**: 
-- All three detections must have the same timestamp (simultaneous)
-- Initial guess is optional - if not provided, automatic generation is used
-- Initial guess bounds are validated before use
-
-## Output Specification
+### Solution Output
 
 | Field | Type | Description |
 |-------|------|-------------|
@@ -207,44 +269,23 @@ cd tools/synthetic-adsb    # Generate synthetic radar data
 cd tools/adsb2dd          # Convert ADS-B to detection format
 ```
 
-### Data Pipeline
+### Synthetic Data Generation
 
+```bash
+cd tools/synthetic-adsb
+python server.py  # Start synthetic radar API
 ```
-synthetic-adsb → adsb2dd → RETINAsolver
+
+Generates realistic aircraft movement patterns and bistatic radar measurements for testing.
+
+### ADS-B Conversion
+
+```bash
+cd tools/adsb2dd
+npm start  # Start web-based converter
 ```
 
-- **synthetic-adsb**: Generates synthetic aircraft movement and radar measurements
-- **adsb2dd**: Converts ADS-B aircraft tracking data to delay-Doppler detection format
-- **RETINAsolver**: Solves for target position and velocity
-
-## Algorithm Details
-
-### Coordinate Systems
-
-- **Input/Output**: Geographic coordinates (WGS84 lat/lon/alt)
-- **Internal**: Local East-North-Up (ENU) tangent plane
-- **Conversions**: Via ECEF intermediate coordinate system
-
-### Optimization
-
-- **Method**: Levenberg-Marquardt least squares
-- **State Vector**: `[x, y, z, vx, vy, vz]` (6 dimensions)
-- **Constraints**: Altitude bounds (0-30km), reasonable velocity limits
-- **Residuals**: 6 equations (3 range + 3 Doppler measurements)
-
-### Initial Guess
-
-**Automatic Generation**:
-- **Geometry**: Ellipse intersection method
-- **Position**: Average of ellipse centers between sensor pairs
-- **Velocity**: Zero initial velocity assumption
-- **Bounds**: Ensures positive altitude for convergence
-
-**User-Provided** (Optional):
-- **Format**: LLA position + ENU velocity in JSON
-- **Conversion**: Automatic LLA→ENU coordinate transformation
-- **Validation**: Altitude (0-100km), velocity (±1000 m/s) bounds checking
-- **Fallback**: Uses automatic generation if validation fails
+Browser-based tool to convert ADS-B aircraft tracking data to detection format.
 
 ## Error Handling
 
@@ -262,18 +303,30 @@ Error types:
 
 ## Performance Characteristics
 
-- **Convergence Rate**: >95% for well-conditioned scenarios
-- **Accuracy**: Sub-meter position, ~1 m/s velocity
-- **Processing Time**: <1 second per solve
-- **Memory Usage**: Minimal (<10MB)
-- **Dependencies**: Only numpy and scipy required
+| Metric | Value |
+|--------|-------|
+| Convergence Rate | >95% |
+| Position Accuracy | <1m typical |
+| Velocity Accuracy | ~1 m/s typical |
+| Processing Time | <1s per solve |
+| Memory Usage | <10MB |
+| Dependencies | numpy, scipy only |
 
 ## Contributing
 
-1. Run tests before submitting changes
-2. Follow existing code style and modularity
-3. Update tests for new features
-4. Maintain backward compatibility for JSON interface
+1. **Code Standards**: Follow existing modularity and style
+2. **Testing**: Add tests for new features
+3. **Documentation**: Update relevant README sections
+4. **Backward Compatibility**: Maintain JSON interface compatibility
+5. **Performance**: Validate solver accuracy before merging
+
+## Architecture Notes
+
+- **Modular Design**: Core solver separated from data generation/conversion
+- **Git Submodules**: Tools maintained in separate repositories
+- **JSON Interface**: Simple, language-agnostic input/output format
+- **Coordinate Flexibility**: Handles global geographic coordinate systems
+- **Robust Validation**: Comprehensive error checking and bounds validation
 
 ## License
 
